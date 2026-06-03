@@ -1,0 +1,27 @@
+html,body{
+    height: 100%;/*Faz ser ocupado toda a altura*/
+    margin: 0;/*Diz ao codigo que nao existe margens*/
+}
+body{ 
+    display:flex; /*Diz ao codigo que o body pode ser manipulado*/
+    flex-direction: column;/*Define o flex como tipo direcional*/
+}
+.container{
+    flex: 1; /*Diz que o container vai usar a função flex*/
+}
+
+
+
+/*Rodapé*/
+
+#CaixaFim{
+    margin-top: 3%;
+    height: 150px;
+    width: 100%;
+    background-color: red;
+    text-align: center;
+    margin-bottom:0%;
+}
+#CaixaFim h5{
+    padding: 1%;
+}
