@@ -1,50 +1,58 @@
-<?php 
-require 'conexao.php';
+<?php
+    
+    //Chama a classe para dentro do codigo
+    require "conexao.php";
 
-if(isset($_POST['btn'])){
+    if(isset($_POST['btn'])){
 
-$nome = $_POST['nome'];
-$idade = $_POST['idade'];
+        $nome = $_POST['nome'];
+        $idade = $_POST['idade'];
+
+        if(empty(trim($nome))){
+
+            echo "<script> alert('Campo nome em branco');window.location.href='inserir.php'; </script>";
+            exit;
+
+        }
+
+        if(empty(trim($idade))){
+
+            echo "<script> alert('Campo idade em branco');window.location.href='inserir.php'; </script>";
+            exit;
+
+        }
+
+        $stmt = $pdo->prepare("INSERT INTO pessoa (nome, idade) VALUES (:nome, :idade)");
+        $stmt->bindParam(":nome", $nome);
+        $stmt->bindParam(":idade", $idade);
+        $stmt->execute();
 
 
+    }
 
- if(empty($nome)){
-      echo "<script> alert('Campo nome em branco');
-       window.location.href='inserir.php'; </script>";
-       exit;}
-
-       if(empty($idade)){
-      echo "<script> alert('Campo Idade em branco');
-       window.location.href='inserir.php'; </script>";
-       exit;
-       } 
-      
-       $stmt = $pdo->prepare("INSERT INTO pessoa(nome,idade) VALUES (:nome, :idade)"); 
-       $stmt->bindParam(":nome", $nome);
-       $stmt->bindParam(":idade", $idade);
-       $stmt->execute();
-}
-       ?>
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Inserir</title>
 </head>
 <body>
-    <label>Nome</label>
-    <input type="text" name="nome">
 
-    <br>
+    <form action="" method="post">
+        <label>Nome</label>
+        <input type="text" name="nome">
 
-    <label>Idade</label>
-    <input type="text" name="idade">
+        <br>
 
-    <br>
+        <label>Idade</label>
+        <input type="text" name="idade">
 
-    <button name="btn" type="submit">Enviar</button>
-    <br>
+        <br>
+
+        <button name="btn" type="submit">Enviar</button>
+    </form>
 </body>
 </html>
