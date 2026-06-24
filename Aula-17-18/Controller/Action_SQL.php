@@ -1,5 +1,5 @@
 <?php 
-        require "../Conexao/Conexao.php";
+        require "../conexao/Conexao.php";
 
     Class Action_SQL{
 
@@ -13,7 +13,7 @@
 
                 $resultado = $stmt;
 
-                    if(empty($resultado != TRUE)){
+                    if($resultado != TRUE){
                 echo "<script> alert('Erro ao selecionar as informações');
                 window.location.href='../../logar.php'; </script>";
                 exit;
@@ -36,7 +36,7 @@
 
                 $resultado = $stmt;
 
-                if(empty($resultado != TRUE)){
+                if($resultado != TRUE){
                     echo "<script> alert('Erro ao selecionar as informações');
                     window.location.href='../View/home.php'; </script>";
                     exit;
@@ -69,11 +69,11 @@
 
             $resultado = $stmt;
 
-            if(empty($resultado != TRUE)){
-                echo "<script> alert('Erro ao inserir as informações');window.location.href='../../cadastrar_livro.php'; </script>";
+            if($resultado != TRUE){
+                echo "<script> alert('Erro ao inserir as informações');window.location.href='../view/cadastrar_livro.php'; </script>";
                 exit;
             }else{
-                echo "<script> alert('Erro ao inserir as informações as informações');window.location.href='../View/home.php'; </script>";
+                echo "<script> alert('Sucesso inserir as informações as informações');window.location.href='../View/home.php'; </script>";
                 exit;
             }
         }
@@ -98,7 +98,7 @@
 
                 $resultado = $stmt;
 
-                if(empty($resultado != TRUE)){
+                if($resultado != TRUE){
                     echo "<script> alert('Erro ao inserir as informações');window.location.href='../../editar_livro'; </script>";
                     exit;
                 }else{
@@ -126,7 +126,7 @@
 
                 $resultado = $stmt;
 
-                if(empty($resultado != TRUE)){
+                if($resultado != TRUE){
                     echo "<script> alert('Erro ao selecionar as informações');window.location.href='../View/home.php'; </script>";
                     exit;
                 }
