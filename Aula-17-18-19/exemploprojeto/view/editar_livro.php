@@ -1,28 +1,38 @@
-<!doctype html>
+<?php 
+
+    require "../Controller/Action_SQL.php";
+    $nova_edicao = new Action_SQL;
+
+    $id = $_GET['id'];
+
+    $requisicao = $nova_edicao->selecionar_id($id);
+    $resultado = $requisicao->fetch(PDO::FETCH_ASSOC);
+
+
+?><!doctype html>
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Exemplo de projeto</title>
 
-    <link rel="stylesheet" href="estilo.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <title>Exemplo de projeto</title>
+
+        <link rel="stylesheet" href="../Includes/estilo.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   </head>
   <body>
 
+
     <div class="container">
 
-        <?php
+        <form action="../Services/validar_editar_action.php" method="post">
 
-            require "../Includes/topo.php";
-
-        ?>
-
-        <form action="../Services/validar_cadastro_action.php" method="post">
-
+            <input type="hidden" name="id" value="<?=  $id ?>">
+            
             <div> 
 
-                <h1 style="text-align: center; margin-top: 3%">Cadastro de Livros</h1>
+                <h1 style="text-align: center; margin-top: 3%">
+                Editar</h1>
 
             </div>
 
@@ -32,7 +42,7 @@
 
                     <label class="form-label">Nome do livro</label>
                     <input type="text" class="form-control" 
-                    placeholder="Nome do Livro..." name="nome">
+                    placeholder="Nome do Livro..." name="nome" value="<?= htmlspecialchars($resultado['nome'])?>">
 
                 </div>
 
@@ -40,7 +50,7 @@
 
                     <label class="form-label">Genero do Livro</label>
                     <input type="text" class="form-control" 
-                    placeholder="Genero..." name="genero">
+                    placeholder="Genero..." name="genero" value="<?=htmlspecialchars($resultado['genero'])?>">
 
                 </div>
 
@@ -51,14 +61,14 @@
                 <div class="col-md-6">
 
                     <label class="form-label">Quantidade de folhas</label>
-                    <input type="text" class="form-control" placeholder="Quantidade de folhas..." name="quant_folhas">
+                    <input type="text" class="form-control" placeholder="Quantidade de folhas..." name="quant_folhas" value="<?=htmlspecialchars($resultado['quant_folhas'])?>">
 
                 </div>
 
                 <div class="col-md-6">
 
                     <label class="form-label">Classificação</label>
-                    <input type="text" class="form-control" placeholder="Classificação..." name="classificacao">
+                    <input type="text" class="form-control" placeholder="Classificação..." name="classificacao" value="<?=htmlspecialchars($resultado['classificacao'])?>">
 
                 </div>
 
@@ -69,7 +79,7 @@
                 <div class="col-md-12">
 
                     <label class="form-label">Descrição do livro:</label>
-                    <textarea name="descricao" rows="4" placeholder="Escreva a descrição do livro aqui" class="form-control"></textarea>
+                    <textarea name="descricao" rows="4" placeholder="Escreva a descrição do livro aqui" class="form-control"><?=htmlspecialchars($resultado['descricao'])?></textarea>
 
                 </div>
 

@@ -16,12 +16,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Exemplo de projeto</title>
 
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="../Includes/estilo.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   </head>
   <body>
 
-    <div class="container">
+    <div style="margin-top: 2%;" class="container">
 
         <?php
 
@@ -55,7 +55,7 @@
                 <td><?= $row['classificacao']; ?></td>
                 <td><?= $row['quant_folhas']; ?></td>
                 <td>
-                    <A href="../view/editar.php?id=<?=$row['id']; ?>  "class="btn btn-primary"> Editar </A>
+                    <A href="../view/editar_livro.php?id=<?=$row['id']; ?>  "class="btn btn-primary"> Editar </A>
                     <A href="../Services/deletar_action.php?id= <?=$row['id']; ?>" onclick="return confirm('Você tem certeza que deseja deletar?')" class="btn btn-danger"> Deletar </A>
 
                 </td>

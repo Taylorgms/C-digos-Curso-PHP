@@ -24,14 +24,14 @@
 
         public function selecionar_id($id){
 
-            if(isset($id)&& $id != NULL && trim($id)){
+            if(isset($id) && $id != NULL && trim($id)){
                 
 
                 $nova_conexao = new Conexao;
 
-                $stmt = $nova_conexao->conectar_banco()
-                ->prepare("SELECT FROM livros WHERE id = :id");
-                $stmt->BindParam(":id", $id);
+                $stmt = $nova_conexao->conectar_banco()->prepare
+                ("SELECT * FROM livros WHERE id = :id");
+                $stmt->bindParam(":id", $id);
                 $stmt->execute();
 
                 $resultado = $stmt;
@@ -86,7 +86,7 @@
                 $nova_conexao = new Conexao;
 
                 $stmt = $nova_conexao->conectar_banco()->prepare
-                ("UPDATE livros SET nome=:nome, descricao=:descricao, genero=:genero, genero=:genero, quant_folhas = :quant_folhas, classificao=:classificacao");
+                ("UPDATE livros SET nome=:nome, descricao=:descricao, genero=:genero, genero=:genero, quant_folhas = :quant_folhas, classificacao=:classificacao");
 
                 $stmt->bindParam(":id", $id);
                 $stmt->bindParam(":nome", $nome);
@@ -99,10 +99,10 @@
                 $resultado = $stmt;
 
                 if($resultado != TRUE){
-                    echo "<script> alert('Erro ao inserir as informações');window.location.href='../../editar_livro'; </script>";
+                    echo "<script> alert('Erro ao editar as informações');window.location.href='../../editar_livro'; </script>";
                     exit;
                 }else{
-                    echo "<script> alert('Erro ao inserir as informações as informações');window.location.href='../View/home.php'; </script>";
+                    echo "<script> alert('Sucesso ao editar as informações');window.location.href='../View/home.php'; </script>";
                     exit;
                 }
         
@@ -127,18 +127,16 @@
                 $resultado = $stmt;
 
                 if($resultado != TRUE){
-                    echo "<script> alert('Erro ao selecionar as informações');window.location.href='../View/home.php'; </script>";
+                    echo "<script> alert('Erro ao deletar as informações');window.location.href='../View/home.php'; </script>";
                     exit;
-                }
-                
-
-            }else{
-                echo "<script> alert('Erro ao selecionar as informações');window.location.href='../View/home.php'; </script>";
+                }else{
+                echo "<script> alert('Sucesso ao deletar as informações');window.location.href='../View/home.php'; </script>";
                 exit;
+                }
+
             }
-            
-        }
         
+        }
     }
 
 ?>
