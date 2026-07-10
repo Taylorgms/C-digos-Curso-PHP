@@ -20,14 +20,16 @@
 
      
        
-        $editar_regiao->setPEC($PEC);
+        $editar_regiao->setPEC($PEC_valor);
         
 
     }
-       if($editar_regiao->getPEC() !="" ){
+       if($editar_regiao->getPEC() != "" ){
 
-        $nova_edicao->editar($id, $PEC,
-        $editar_regiao->getPEC(),   
+        $nova_edicao->editar(
+            $id, 
+            $PEC,
+            $editar_regiao->getPEC()
         );
         }
 ?>

@@ -25,5 +25,11 @@
             $PEC,
             $nova_regiao->getPEC());
 
+        }else{
+            $nova_insercao->inserir_JOIN(
+                $nova_regiao->getPais(),
+                $nova_regiao->getEstado(),
+                $nova_regiao->getCidade());
+            
         }
 ?>

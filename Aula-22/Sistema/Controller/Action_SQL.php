@@ -58,7 +58,7 @@
                 $nova_conexao = new Conexao;
 
                 $stmt = $nova_conexao->conectar_banco()->prepare
-                ("SELECT * FROM  " . $PEC . "WHERE id = :id");
+                ("SELECT * FROM  " . $PEC . " WHERE id = :id");
                 $stmt->bindParam(":id", $id);
                 $stmt->execute();
 
@@ -165,7 +165,7 @@
                 $nova_conexao = new Conexao;
 
                 $stmt = $nova_conexao->conectar_banco()->prepare
-                (" UPDATE " . $PEC . " SET " . $PEC . " = :pec_valor WHERE id = :id  ");
+                (" UPDATE " . $PEC . " SET " . $PEC . " = :PEC_valor WHERE id = :id");
 
                 $stmt->bindParam(":id", $id);
                 $stmt->bindParam(":PEC_valor", $PEC_valor);
@@ -254,8 +254,7 @@
 
                 $nova_conexao = new Conexao;
 
-                $stmt = $nova_conexao->conectar_banco()
-                ->prepare("DELETE FROM regioes WHERE id = :id");
+                $stmt = $nova_conexao->conectar_banco()->prepare("DELETE FROM regioes WHERE id = :id");
                 $stmt->BindParam(":id", $id);
                 $stmt->execute();
 
