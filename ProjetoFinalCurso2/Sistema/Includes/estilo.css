@@ -1,0 +1,28 @@
+html, body{ 
+    height: 100%; 
+    margin: 0;
+} 
+body{ 
+    display: flex; 
+    flex-direction: column;
+} 
+.container{ 
+    flex: 1; 
+}
+
+/*Rodape*/
+#caixaFim{
+
+    margin-top: 2%;
+    height: 150px;
+    width: 100%;
+    background-color: aquamarine;
+    text-align: center;
+    
+}
+
+#caixaFim h5{
+
+    padding: 2%;
+
+}
