@@ -28,7 +28,7 @@ if (isset($_POST['enviar'])) {
 
     $comparar = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($comparar && password_verify($senha, $comparar['senha'])) {
+    if ($email == $comparar['email'] && $senha == $comparar['senha']) {
 
         $_SESSION['logado'] = true;
         $_SESSION['usuario_id'] = $comparar['id'];
